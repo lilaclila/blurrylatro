@@ -117,9 +117,10 @@ vec4 bl_sample( Image texture, vec2 texture_coords )
 	vec2 floored_uv = (floor((uv*texture_details.ba)))/texture_details.ba;
     vec2 uv_scaled_centered = (floored_uv - 0.5) * 50.;
 	
-	vec2 field_part1 = uv_scaled_centered + 50.*vec2(sin(-t / 143.6340), cos(-t / 99.4324));
-	vec2 field_part2 = uv_scaled_centered + 50.*vec2(cos( t / 53.1532),  cos( t / 61.4532));
-	vec2 field_part3 = uv_scaled_centered + 50.*vec2(sin(-t / 87.53218), sin(-t / 49.0000));
+	// bumped this up from 50 so the rainbow doesnt make a weird circle in the middle
+	vec2 field_part1 = uv_scaled_centered + 300.*vec2(sin(-t / 143.6340), cos(-t / 99.4324));
+	vec2 field_part2 = uv_scaled_centered + 300.*vec2(cos( t / 53.1532),  cos( t / 61.4532));
+	vec2 field_part3 = uv_scaled_centered + 300.*vec2(sin(-t / 87.53218), sin(-t / 49.0000));
 
     float field = (1.+ (
         cos(length(field_part1) / 19.483) + sin(length(field_part2) / 33.155) * cos(field_part2.y / 15.73) +
